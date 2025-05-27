@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Parser</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Resume Parser</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="resume" accept=".txt" required>
+            <button type="submit">Parse Resume</button>
+        </form>
+
+        {% if parsed_data %}
+        <h2>Parsed Information</h2>
+        <ul>
+            {% for key, value in parsed_data.items() %}
+            <li><strong>{{ key }}:</strong> {{ value }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% if error %}
+        <p class="error">{{ error }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
